@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load blog_tags %}
 
 {% block title %}Homework{% endblock %}
 
@@ -18,7 +19,7 @@
             Published {{ post.create }} by {{ post.author }}
         </p>
         <div class="border-bottom border-2">
-            {{ post.body|truncatewords:30|linebreaks }}
+            {{ post.body|markdown|truncatewords_html:30 }}
         </div>
         <p class="tags fw-semibold text-secondary border-bottom">
             {% for tag in post.tags.all %}
